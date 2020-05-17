@@ -158,13 +158,9 @@ class InputConnectionController implements TextInputClient {
     }
   }
 
-  //
-  // Private members
-  //
-
-  final List<TextEditingValue> _sentRemoteValues = [];
-  TextInputConnection _textInputConnection;
-  TextEditingValue _lastKnownRemoteTextEditingValue;
+  @override
+  TextEditingValue get currentTextEditingValue =>
+      _lastKnownRemoteTextEditingValue;
 
   @override
   void updateFloatingCursor(RawFloatingCursorPoint point) {
@@ -180,7 +176,10 @@ class InputConnectionController implements TextInputClient {
       _sentRemoteValues.clear();
     }
   }
+  // Private members
+  //
 
-  @override
-  TextEditingValue get currentTextEditingValue => this._lastKnownRemoteTextEditingValue;
+  final List<TextEditingValue> _sentRemoteValues = [];
+  TextInputConnection _textInputConnection;
+  TextEditingValue _lastKnownRemoteTextEditingValue;
 }
